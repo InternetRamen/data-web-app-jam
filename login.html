@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <button id="login">Sign in with Google</button>
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+            import {
+                getAuth,
+                signInWithPopup,
+                GoogleAuthProvider,
+            } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+            const firebaseConfig = {
+                apiKey: "AIzaSyDPmUrxN_6xgvYrMKlVfIPiyAUhzrXmd8c",
+                authDomain: "hackclub-jam.firebaseapp.com",
+                projectId: "hackclub-jam",
+                storageBucket: "hackclub-jam.appspot.com",
+                messagingSenderId: "891850750585",
+                appId: "1:891850750585:web:a89e87dd92df34b91732a8",
+            };
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth();
+            const provider = new GoogleAuthProvider();
+
+            const login = document.getElementById("login");
+            login.addEventListener("click", () => {
+                signInWithPopup(auth, provider).then(() =>
+                    window.location.replace("/")
+                );
+            });
+        </script>
+    </body>
+</html>

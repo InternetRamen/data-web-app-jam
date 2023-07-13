@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <form id="form">
+            <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Name"
+                required
+            />
+            <input
+                type="text"
+                name="town"
+                id="townhall"
+                placeholder="TH 9"
+                required
+            />
+            <input
+                type="text"
+                name="link"
+                id="link"
+                placeholder="Link"
+                required
+            />
+            <input type="submit" value="Submit" />
+        </form>
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+            import {
+                getAuth,
+                signInWithPopup,
+                GoogleAuthProvider,
+            } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+            import {
+                getFirestore,
+                setDoc,
+                doc,
+            } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+            const firebaseConfig = {
+                apiKey: "AIzaSyDPmUrxN_6xgvYrMKlVfIPiyAUhzrXmd8c",
+                authDomain: "hackclub-jam.firebaseapp.com",
+                projectId: "hackclub-jam",
+                storageBucket: "hackclub-jam.appspot.com",
+                messagingSenderId: "891850750585",
+                appId: "1:891850750585:web:a89e87dd92df34b91732a8",
+            };
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth();
+            const db = getFirestore();
+            const form = document.getElementById("form");
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const currentUser = auth.currentUser;
+                if (!currentUser) {
+                    alert("Please login first");
+                    return;
+                }
+                const name = document.getElementById("name").value;
+                const townhall = document.getElementById("townhall").value;
+                const link = document.getElementById("link").value;
+                setDoc(doc(db, "posts", name), {
+                    name: name,
+                    townhall: townhall,
+                    link: link,
+                });
+
+            });
+        </script>
+    </body>
+</html>
