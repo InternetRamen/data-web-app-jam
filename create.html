@@ -4,9 +4,10 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body>
-        <form id="form">
+        <form id="form" class="flex flex-col mx-auto max-w-3xl w-11/12 items-center">
             <input
                 type="text"
                 name="name"
@@ -18,7 +19,7 @@
                 type="text"
                 name="town"
                 id="townhall"
-                placeholder="TH 9"
+                placeholder="Townhall"
                 required
             />
             <input
@@ -69,8 +70,18 @@
                     townhall: townhall,
                     link: link,
                 });
-
+                alert("Submitted");
             });
         </script>
+        <style>
+            input {
+                margin: 0.5rem 0;
+                padding: 0.5rem;
+                border: 1px solid #ccc;
+                border-radius: 0.25rem;
+                width: 100%;
+                max-width: 400px;
+            }
+        </style>
     </body>
 </html>
