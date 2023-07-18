@@ -17,16 +17,9 @@
             />
             <input
                 type="text"
-                name="town"
-                id="townhall"
-                placeholder="Townhall"
-                required
-            />
-            <input
-                type="text"
-                name="link"
-                id="link"
-                placeholder="Link"
+                name="idea"
+                id="idea"
+                placeholder="Idea"
                 required
             />
             <input type="submit" value="Submit" />
@@ -63,12 +56,11 @@
                     return;
                 }
                 const name = document.getElementById("name").value;
-                const townhall = document.getElementById("townhall").value;
-                const link = document.getElementById("link").value;
+                const idea = document.getElementById("idea").value;
                 setDoc(doc(db, "posts", name), {
                     name: name,
-                    townhall: townhall,
-                    link: link,
+                    idea: idea,
+                    author: currentUser.displayName,
                 });
                 alert("Submitted");
             });

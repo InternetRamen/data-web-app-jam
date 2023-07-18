@@ -9,7 +9,7 @@
     </head>
     <body>
         <div id="div" class="mx-auto max-w-3xl mt-4 w-11/12">
-            <h1 class="text-4xl font-bold text-red-400">Clash of Clans Link Sharing</h1>
+            <h1 class="text-4xl font-bold text-red-400">Share your JAM ideas</h1>
             <div class="flex gap-2 mb-12 text-gray-500"><a href="/login.html">Login</a>•<a href="/create.html">Create a post</a></div>
         </div>
         <script type="module">
@@ -35,18 +35,13 @@
                 const element = document.createElement("div");
                 element.classList.add("post");
                 const name = document.createElement("h1");
-                name.innerText = doc.data().name;
+                name.innerText = doc.data().name + " • " + doc.data().author;
                 name.classList.add("text-3xl", "font-medium", )
                 element.appendChild(name);
-                const townhall = document.createElement("h2");
-                townhall.classList.add("text-xl", "text-gray-500");
-                townhall.innerText = doc.data().townhall;
-                element.appendChild(townhall);
-                const link = document.createElement("a");
-                link.innerText = doc.data().link;
-                link.href = doc.data().link;
-                link.classList.add("text-blue-500", "hover:underline");
-                element.appendChild(link);
+                const idea = document.createElement("a");
+                idea.innerText = doc.data().idea;
+                idea.classList.add("text-gray-500");
+                element.appendChild(idea);
                 div.appendChild(element);
             });
         </script>
