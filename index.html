@@ -31,11 +31,12 @@
             const db = getFirestore();
             const div = document.getElementById("div");
             const querySnapshot = await getDocs(collection(db, "posts"));
+            const emojis = ["🍯","🍇","🍓","🫐","🍞","🥐"]
             querySnapshot.forEach((doc) => {
                 const element = document.createElement("div");
                 element.classList.add("post");
                 const name = document.createElement("h1");
-                name.innerText = doc.data().name + " • " + doc.data().author;
+                name.innerText = emojis[Math.floor(Math.random()*emojis.length)] + " " + doc.data().name + " • " + doc.data().author;
                 name.classList.add("text-3xl", "font-medium", )
                 element.appendChild(name);
                 const idea = document.createElement("a");
