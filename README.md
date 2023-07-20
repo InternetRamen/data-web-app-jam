@@ -19,7 +19,7 @@ Brain Fact!
 </summary>
 The human brain weighs 3 pounds
 </details>
-The foundations of any social media app is creating and loading some sort of post. Think of any popular social media (Instagram, Reddit, YouTube, or even a recipe app)
+The foundation of any social media app is creating and loading some sort of post. Think of any popular social media (Instagram, Reddit, YouTube, or even a recipe app)
 
 ## Setting up
 
@@ -31,13 +31,13 @@ create.html
 login.html
 ```
 
-These are the three pages we'll be using for our app. `index.html` is the home page where we'll load all the posts, `create.html` is the page where users can create posts, and `login.html` is the page where users can login.
+These are the three pages we'll be using for our app. `index.html` is the home page where we'll load all the posts, `create.html` is the page where users can create posts, and `login.html` is the page where users can log in.
 
-In each page, we have a basic HTML boilerplate with script and style tags. Conventionally, you'd have these in other files and link them to the HTML file, but for simplicity, we'll just keep them in the same file.
+On each page, we have a basic HTML boilerplate with script and style tags. Conventionally, you'd have these in other files and link them to the HTML file, but for simplicity, we'll just keep them in the same file.
 
 ### Creating a Firebase account
 
-Head over to [Firebase Console](https://console.firebase.google.com/u/0/) and login with Google. Once you're in, create a new project and name it whatever you want.
+Head over to [Firebase Console](https://console.firebase.google.com/u/0/) and log in with Google. Once you're in, create a new project and name it whatever you want.
 
 Then, click and enable `Authentication` and `Firestore Database`.
 ![Console](image-1.png)
@@ -103,7 +103,7 @@ Firebase gives us a really useful `signInWithPopup` and `GoogleAuthProvider` to 
 
 First, add your **Firebase code snippet** from before to the script tag.
 
-Then, import these Firebase functions. This lets us use pre-written functions in our code. Specifically, we want to use `getAuth` to load the authentication, `signInWithPopup` to prompt the user with a popup to login, and `GoogleAuthProvider` to tell Firebase that we want to use Google.
+Then, import these Firebase functions. This lets us use pre-written functions in our code. Specifically, we want to use `getAuth` to load the authentication, `signInWithPopup` to prompt the user with a popup to log in, and `GoogleAuthProvider` to tell Firebase that we want to use Google.
 
 ```js
 import {
@@ -116,7 +116,6 @@ import {
 Initialize `getAuth` and the `GoogleAuthProvider`.
 
 ```js
-const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 ```
@@ -179,7 +178,7 @@ Whales can get SUNBURNS
 
 Head over to `create.html`. This is where we'll let users create posts. I'll have to leave these fields up to you, but I'll give you a starting point. Please add fields that are relevant to your idea!
 
-**From now on, your code will depend on the idea you came up with.** For me, I'm going with a dog personality sharing app.
+**From now on, your code will depend on the idea you came up with.** For me, I'm going with a dog personality-sharing app.
 
 First, create a form for users to enter their information.
 
@@ -191,7 +190,7 @@ First, create a form for users to enter their information.
 </form>
 ```
 
-> The fields `name` and `description` can be anything you want. Add fields that make sense for your app! For example, a recipe app may have estimated time to make, and a club directory app may have meeting times.
+> The fields `name` and `description` can be anything you want. Add fields that make sense for your app! For example, a recipe app may have an estimated time to make, and a club directory app may have meeting times.
 
 This is just a basic form with 2 inputs and a submit button. Adding IDs to each input allows us to access the values on submit. Adding an ID to the form allows us to add an event listener to it.
 
@@ -212,15 +211,14 @@ import {
 
 Importing `getFirestore`, `addDoc`, and `doc` allows us to load Firestore, add documents to the database, and reference a document in the database, respectively.
 
-Load each package as well as the Firebase app.
+Load each package.
 
 ```js
-const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 ```
 
-Then, access the form element, and add an event listener to listen for form submits.
+Then, access the form element, and add an event listener to listen for form submissions.
 
 ```js
 form.addEventListener("submit", (e) => {
@@ -332,16 +330,23 @@ This is where it gets good. We'll be loading posts from the database and display
 
 > I'll leave this implementation up to you, but I'll give you some steps to get started.
 
-First, add the **Firebase code snippet** and import the Firestore functions from before.
+First, add the **Firebase code snippet**, and import and initialize the Firestore functions from before.
 
 ```js
-
-
+import {
+    getFirestore,
+    getDocs,
+    collection,
+} from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+const db = getFirestore();
+```
 
 To create an element for each post, we'll need to get each post and run a function for each. We'll need `getDocs`. `getDocs` returns a [Promise](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises#async_and_await), and we can use `await` to turn that into a value, but we won't get into that in this jam (think of it as a black box).
 
- This is our home page where we'll load all the posts. For
-example, if you're making a recipe app, you'd have a `Recipe` class that has a
-`name`, `ingredients`, and `instructions`. If you're making a social media app,
-you'd have a `Post` class that has a `title`, `content`, and `author`.
+Here's an example of how to use `getDocs` to get all the posts.
+```js
+const posts = await getDocs(collection(db, "posts"));
 ```
+Now, we can use [`.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) to [create elements](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement).
+
+*draft*
