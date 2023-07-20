@@ -1,3 +1,21 @@
+---
+title: 'Building social media apps'
+description: >
+    At the end of this jam, you'll create your very own social media app that handles users and posts.
+contributor: 'InternetRamen'
+thumbnail: 'https://scrapbook-into-the-redwoods.s3.amazonaws.com/2318e7a7-f3d8-44d3-8e7c-efb01b297a25-placeholder.png'
+timeEstimate: '60 Min'
+difficulty: 'Intermediate'
+keywords: 'Web, App, website, javascript, HTML, Replit, Firebase, user authentication'
+language: 'HTML & JS'
+presentation: ''
+presentationPlay: ''
+presentationPDF: ''
+notes: ''
+poster: ''
+video: ''
+slug: 'building-social-media-apps'
+---
 # Building social media apps
 
 _1 hour • Intermediate_
