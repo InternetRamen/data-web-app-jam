@@ -10,7 +10,7 @@
     <body>
         <div id="div" class="mx-auto max-w-3xl mt-4 w-11/12">
             <h1 class="text-4xl font-bold text-red-400">Share your JAM ideas</h1>
-            <div class="flex gap-2 mb-12 text-gray-500"><a href="/login.html">Login</a>•<a href="/create.html">Create a post</a></div>
+            <div class="flex gap-2 mb-12 text-gray-500"><button id="login">Sign in with Google</button>•<a href="/create.html">Create a post</a></div>
         </div>
         <script type="module">
             import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
@@ -19,6 +19,11 @@
                 getDocs,
                 collection,
             } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+            import {
+                getAuth,
+                signInWithPopup,
+                GoogleAuthProvider,
+            } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
             const firebaseConfig = {
                 apiKey: "AIzaSyDPmUrxN_6xgvYrMKlVfIPiyAUhzrXmd8c",
                 authDomain: "hackclub-jam.firebaseapp.com",
@@ -28,6 +33,19 @@
                 appId: "1:891850750585:web:a89e87dd92df34b91732a8",
             };
             const app = initializeApp(firebaseConfig);
+
+
+            const auth = getAuth();
+            const provider = new GoogleAuthProvider();
+
+            const login = document.getElementById("login");
+            login.addEventListener("click", () => {
+                signInWithPopup(auth, provider).then(() =>
+                    window.location.replace("/")
+                );
+            });
+
+
             const db = getFirestore();
             const div = document.getElementById("div");
             const querySnapshot = await getDocs(collection(db, "posts"));

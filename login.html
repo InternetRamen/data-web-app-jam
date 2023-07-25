@@ -23,15 +23,6 @@
                 appId: "1:891850750585:web:a89e87dd92df34b91732a8",
             };
             const app = initializeApp(firebaseConfig);
-            const auth = getAuth();
-            const provider = new GoogleAuthProvider();
-
-            const login = document.getElementById("login");
-            login.addEventListener("click", () => {
-                signInWithPopup(auth, provider).then(() =>
-                    window.location.replace("/")
-                );
-            });
         </script>
         <style>
             button {
