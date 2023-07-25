@@ -398,12 +398,14 @@ posts.forEach((doc) => {
         " • " +
         doc.data().author;
     element.appendChild(name);
-    const idea = document.createElement("a");
-    idea.innerText = doc.data().idea;
+    const description = document.createElement("p");
+    idea.innerText = doc.data().description;
     element.appendChild(idea);
     div.appendChild(element);
 });
 ```
+
+> Your code will look different depending on your fields
 
 </Dropdown>
 
