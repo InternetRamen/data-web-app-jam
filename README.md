@@ -24,7 +24,7 @@ At the end of this jam, we'll create a social media app that handles users and p
 We'll be using [Firebase](https://firebase.google.com) SDKs to help us with user authentication and data storage.
 
 Here's a demo of something you could build:
-![Demo](https://cloud-e2rnk6vqx-hack-club-bot.vercel.app/0image.png)
+![Demo](https://cloud-aspwulevx-hack-club-bot.vercel.app/0document.png)
 [demo.jaden.mov](https://demo.jaden.mov)
 
 <Dropdown title="Leader notes">
